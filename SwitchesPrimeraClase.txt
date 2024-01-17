@@ -13,6 +13,8 @@ switchport access vlan 10
 interface range fa 0/5-9
 switchport mode access
 switchport access vlan 20
+END
+!!!!!SWITCH_X #
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!CONFIGURACIÓN PARA ROUTERS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Primero
 ENABLE
@@ -26,6 +28,8 @@ IP ADDRESS 192.168.0.1 255.255.255.128
 INTERFACE GI 0/0.20
 ENCAPSULATION DOT1Q 20
 IP ADDRESS 192.168.0.129 255.255.255.128
+END
+!!!!!ROUTER_X #
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Segundo
 ENABLE
 CONFIGURE TERMINAL
@@ -38,6 +42,8 @@ IP ADDRESS 192.168.1.1 255.255.255.128
 INTERFACE GI 0/0.20
 ENCAPSULATION DOT1Q 20
 IP ADDRESS 192.168.1.129 255.255.255.128
+END
+!!!!!ROUTER_X #
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Tercero
 ENABLE
 CONFIGURE TERMINAL
@@ -50,14 +56,17 @@ IP ADDRESS 192.168.2.1 255.255.255.128
 INTERFACE GI 0/0.20
 ENCAPSULATION DOT1Q 20
 IP ADDRESS 192.168.2.129 255.255.255.128
+END
+!!!!!ROUTER_X #
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ENLACES TRONCALES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!SWITCH_A (ES EL EJEMPLO)
-!!!ESTAMOS EN LA CONFIGURACIÓN GLOBAL
+CONFIGURE TERMINAL
+!!!SWITCH_X (config)
 INTERFACE GI 0/1
 SWITCHPORT MODE ACCESS
 SWITCHPORT MODE TRUNK
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Abajo sigue una sección de notas (son simples notas) para la configuración IP de los pares de hosts
+END
+!!!!!SWITCH_X #
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Abajo sigue una sección de notas (son simples notas) para la configuración IP de los pares de hosts. [OJO: ESO NO VA EN PACKET TRACER]
 IP: 192.168.0.2
 Máscara: 255.255.255.128
 Gateway: 192.168.0.1
