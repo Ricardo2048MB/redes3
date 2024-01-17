@@ -1,0 +1,33 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!CONFIGURACIÓN PARA SWITCHES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+enable
+configure terminal
+vlan 10
+name sistemas
+vlan 20
+name telecom
+!!!asignar puertos
+interface range fa 0/1-4
+switchport mode access
+switchport access vlan 10
+!!!Asignar los puertos restantes
+interface range fa 0/5-9
+switchport mode access
+switchport access vlan 20
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!CONFIGURACIÓN PARA ROUTERS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ENABLE
+CONFIGURE TERMINAL
+!!!!!ROUTER ON A STICK
+INTERFACE GI 0/0
+NO SHUTDOWN
+INTERFACE GI 0/0.10
+ENCAPSULATION DOT1Q 10
+IP ADDRESS 192.168.0.1 255.255.255.128
+INTERFACE GI 0/0.20
+ENCAPSULATION DOT1Q 20
+IP ADDRESS 192.168.0.129 255.255.255.128
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ENLACES TRONCALES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!SWITCH_A (ES EL EJEMPLO)
+!!!ESTAMOS EN LA CONFIGURACIÓN GLOBAL
+INTERFACE GI 0/1
+SWITCHPORT MODE ACCESS
+SWITCHPORT MODE TRUNK
