@@ -14,6 +14,7 @@ interface range fa 0/5-9
 switchport mode access
 switchport access vlan 20
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!CONFIGURACIÓN PARA ROUTERS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Primero
 ENABLE
 CONFIGURE TERMINAL
 !!!!!ROUTER ON A STICK
@@ -25,6 +26,30 @@ IP ADDRESS 192.168.0.1 255.255.255.128
 INTERFACE GI 0/0.20
 ENCAPSULATION DOT1Q 20
 IP ADDRESS 192.168.0.129 255.255.255.128
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Segundo
+ENABLE
+CONFIGURE TERMINAL
+!!!!!ROUTER ON A STICK
+INTERFACE GI 0/0
+NO SHUTDOWN
+INTERFACE GI 0/0.10
+ENCAPSULATION DOT1Q 10
+IP ADDRESS 192.168.1.1 255.255.255.128
+INTERFACE GI 0/0.20
+ENCAPSULATION DOT1Q 20
+IP ADDRESS 192.168.1.129 255.255.255.128
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Tercero
+ENABLE
+CONFIGURE TERMINAL
+!!!!!ROUTER ON A STICK
+INTERFACE GI 0/0
+NO SHUTDOWN
+INTERFACE GI 0/0.10
+ENCAPSULATION DOT1Q 10
+IP ADDRESS 192.168.2.1 255.255.255.128
+INTERFACE GI 0/0.20
+ENCAPSULATION DOT1Q 20
+IP ADDRESS 192.168.2.129 255.255.255.128
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ENLACES TRONCALES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!SWITCH_A (ES EL EJEMPLO)
 !!!ESTAMOS EN LA CONFIGURACIÓN GLOBAL
@@ -51,8 +76,8 @@ Gateway: 192.168.1.129
 ----------------------------------------------------------------------------------
 IP: 192.168.2.2
 Máscara: 255.255.255.128
-Gateway: 192.168.0.1
+Gateway: 192.168.2.1
 
 IP: 192.168.2.130
 Máscara: 255.255.255.128
-Gateway: 192.168.0.129
+Gateway: 192.168.2.129
