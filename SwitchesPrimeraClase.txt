@@ -31,3 +31,28 @@ IP ADDRESS 192.168.0.129 255.255.255.128
 INTERFACE GI 0/1
 SWITCHPORT MODE ACCESS
 SWITCHPORT MODE TRUNK
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Abajo sigue una sección de notas (son simples notas) para la configuración IP de los pares de hosts
+IP: 192.168.0.2
+Máscara: 255.255.255.128
+Gateway: 192.168.0.1
+
+IP: 192.168.0.130
+Máscara: 255.255.255.128
+Gateway: 192.168.0.129
+----------------------------------------------------------------------------------
+IP: 192.168.1.2
+Máscara: 255.255.255.128
+Gateway: 192.168.1.1
+
+IP: 192.168.1.130
+Máscara: 255.255.255.128
+Gateway: 192.168.1.129
+----------------------------------------------------------------------------------
+IP: 192.168.2.2
+Máscara: 255.255.255.128
+Gateway: 192.168.0.1
+
+IP: 192.168.2.130
+Máscara: 255.255.255.128
+Gateway: 192.168.0.129
