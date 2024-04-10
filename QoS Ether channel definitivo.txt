@@ -1,0 +1,302 @@
+   Multilayer Switch0   Switch>ENABLE
+   Multilayer Switch0   Switch#CONFIGURE TERMINAL
+   Multilayer Switch0   Switch(config)#HOSTNAME SERVER
+   Multilayer Switch0   SERVER(config)#VTP MODE SERVER
+   Multilayer Switch0   SERVER(config)#VTP DOMAIN CISCO
+   Multilayer Switch0   SERVER(config)#VTP PASSWORD CISCO
+   Multilayer Switch0   SERVER(config)#VLAN 10
+   Multilayer Switch0   SERVER(config-vlan)#NAME RICARDO
+   Multilayer Switch0   SERVER(config-vlan)#VLAN 20
+   Multilayer Switch0   SERVER(config-vlan)#NAME MUNNOS
+   Multilayer Switch0   SERVER(config-vlan)#VLAN 30
+   Multilayer Switch0   SERVER(config-vlan)#NAME BOLANNOS.
+   Multilayer Switch0   SERVER(config-vlan)#VLAN 40 
+   Multilayer Switch0   SERVER(config-vlan)#NAME STORAGE
+   Switch0   Switch>ENABLE 
+   Switch0   Switch#CONFIGURE TERMINAL
+   Switch0   Switch(config)#HOSTNAME CLIENTE1
+   Switch0   CLIENTE1(config)#VTP MODE CLIENT
+   Switch0   CLIENTE1(config)#VTP DOMAIN CISCO
+   Switch0   CLIENTE1(config)#VTP PASSWORD CISCO
+   Switch1   Switch>ENABLE 
+   Switch1   Switch#CONFIGURE TERMINAL
+   Switch1   Switch(config)#HOSTNAME CLIENTE2
+   Switch1   CLIENTE2(config)#VTP MODE CLIENT
+   Switch1   CLIENTE2(config)#VTP DOMAIN CISCO
+   Switch1   CLIENTE2(config)#VTP PASSWORD CISCO
+   Switch0   CLIENTE1(config)#END
+   Switch0   CLIENTE1#EXIT
+   Switch0   CLIENTE1>ENABLE 
+   Switch0   CLIENTE1#CONFIGURE TERMINAL
+   Switch0   CLIENTE1(config)#INTERFACE GI 0/1
+   Switch0   CLIENTE1(config-if)#SWITCHPORT MODE ACCESS
+   Switch0   CLIENTE1(config-if)#SWITCHPORT MODE TRUNK
+   Multilayer Switch0   SERVER(config-vlan)#EXIT
+   Multilayer Switch0   SERVER(config)#END
+   Multilayer Switch0   SERVER#EXIT
+   Multilayer Switch0   SERVER>ENABLE 
+   Multilayer Switch0   SERVER#CONFIGURE TERMINAL
+   Multilayer Switch0   SERVER(config)#INTERFACE GI 0/1
+   Multilayer Switch0   SERVER(config-if)#SWITCHPORT MODE ACCESS
+   Multilayer Switch0   SERVER(config-if)#SWITCHPORT MODE TRUNK
+   Multilayer Switch0   SERVER(config-if)#END
+   Multilayer Switch0   SERVER#EXIT
+   Switch0   CLIENTE1(config-if)#END
+   Switch0   CLIENTE1#EXIT
+   Switch0   CLIENTE1>CONFIGURE TERMINAL
+   Switch0   CLIENTE1>INTERFACE RANGE FA 0/1-5
+   Switch0   CLIENTE1>SWITCHPORT MODE ACCESS
+   Switch0   CLIENTE1>SWITCHPORT ACCESS VLAN 10
+   Switch0   CLIENTE1>INTERFACE RANGE FA 0/6-10
+   Switch0   CLIENTE1>SWITCHPORT MODE ACCESS
+   Switch0   CLIENTE1>SWITCHPORT ACCESS VLAN 20
+   Switch0   CLIENTE1>INTERFACE RANGE FA 0/11-15
+   Switch0   CLIENTE1>SWITCHPORT MODE ACCESS
+   Switch0   CLIENTE1>SWITCHPORT ACCESS VLAN 30
+   Switch0   CLIENTE1>INTERFACE RANGE FA 0/16-24
+   Switch0   CLIENTE1>SWITCHPORT MODE ACCESS
+   Switch0   CLIENTE1>SWITCHPORT ACCESS VLAN 40
+   Switch0   CLIENTE1>ENABLE 
+   Switch0   CLIENTE1#CONFIGURE TERMINAL
+   Switch0   CLIENTE1(config)#INTERFACE RANGE FA 0/1-5
+   Switch0   CLIENTE1(config-if-range)#SWITCHPORT MODE ACCESS
+   Switch0   CLIENTE1(config-if-range)#SWITCHPORT ACCESS VLAN 10
+   Switch0   CLIENTE1(config-if-range)#INTERFACE RANGE FA 0/6-10
+   Switch0   CLIENTE1(config-if-range)#SWITCHPORT MODE ACCESS
+   Switch0   CLIENTE1(config-if-range)#SWITCHPORT ACCESS VLAN 20
+   Switch0   CLIENTE1(config-if-range)#INTERFACE RANGE FA 0/11-15
+   Switch0   CLIENTE1(config-if-range)#SWITCHPORT MODE ACCESS
+   Switch0   CLIENTE1(config-if-range)#SWITCHPORT ACCESS VLAN 30
+   Switch0   CLIENTE1(config-if-range)#INTERFACE RANGE FA 0/16-24
+   Switch0   CLIENTE1(config-if-range)#SWITCHPORT MODE ACCESS
+   Switch0   CLIENTE1(config-if-range)#SWITCHPORT ACCESS VLAN 40
+   Switch0   CLIENTE1(config-if-range)#DO SHOW VLAN
+   Switch0   CLIENTE1(config-if-range)#END
+   Switch0   CLIENTE1#EXIT
+   Multilayer Switch0   SERVER>ENABLE
+   Multilayer Switch0   SERVER#CONFIGURE TERMINAL
+   Multilayer Switch0   SERVER(config)#INTERFACE RANGE FA 0/22-24
+   Multilayer Switch0   SERVER(config-if-range)#SWITCHPORT MODE ACCESS
+   Multilayer Switch0   SERVER(config-if-range)#CHANNEL-GROUP 1 MODE ACTIVE
+   Multilayer Switch0   SERVER(config-if-range)#END
+   Multilayer Switch0   SERVER#EXIT
+   Switch1   CLIENTE2>CONFIGURE TERMINAL
+   Switch1   CLIENTE2>INTERFACE RANGE FA 0/22-24
+   Switch1   CLIENTE2>SWITCHPORT MODE ACCESS
+   Switch1   CLIENTE2>ENABLE
+   Switch1   CLIENTE2#CONFIGURE TERMINAL
+   Switch1   CLIENTE2(config)#INTERFACE RANGE FA 0/22-24
+   Switch1   CLIENTE2(config-if-range)#SWITCHPORT MODE ACCESS
+   Switch1   CLIENTE2(config-if-range)#CHANNEL-GROUP 1 MODE PASSIVE
+   Switch1   CLIENTE2(config-if-range)#END
+   Switch1   CLIENTE2#EXIT
+   Multilayer Switch0   SERVER>ENABLE
+   Multilayer Switch0   SERVER#CONFIGURE TERMINAL
+   Multilayer Switch0   SERVER(config)#INTERFACE PORT-CHANNEL 1
+   Multilayer Switch0   SERVER(config-if)#SWITCHPORT MODE ACCESS
+   Multilayer Switch0   SERVER(config-if)#SWITCHPORT MODE TRUNK
+   Multilayer Switch0   SERVER(config-if)#END
+   Multilayer Switch0   SERVER#EXIT
+   Switch1   CLIENTE2>ENABLE
+   Switch1   CLIENTE2#CONFIGURE TERMINAL
+   Switch1   CLIENTE2(config)#INTERFACE PORT-CHANNEL 1
+   Switch1   CLIENTE2(config-if)#SWITCHPORT MODE ACCESS
+   Switch1   CLIENTE2(config-if)#SWITCHPORT MODE TRUNK
+   Switch1   CLIENTE2(config-if)#END
+   Switch1   CLIENTE2#EXIT
+   Switch1   CLIENTE2>SHOW VLAN
+   Switch1   CLIENTE2>ENABLE 
+   Switch1   CLIENTE2#CONFIGURE TERMINAL
+   Switch1   CLIENTE2(config)#INTERFACE RANGE FA 0/1-5
+   Switch1   CLIENTE2(config-if-range)#SWITCHPORT MODE ACCESS
+   Switch1   CLIENTE2(config-if-range)#SWITCHPORT ACCESS VLAN 10
+   Switch1   CLIENTE2(config-if-range)#INTERFACE RANGE FA 0/6-10
+   Switch1   CLIENTE2(config-if-range)#SWITCHPORT MODE ACCESS
+   Switch1   CLIENTE2(config-if-range)#SWITCHPORT ACCESS VLAN 20
+   Switch1   CLIENTE2(config-if-range)#INTERFACE RANGE FA 0/11-15
+   Switch1   CLIENTE2(config-if-range)#SWITCHPORT MODE ACCESS
+   Switch1   CLIENTE2(config-if-range)#SWITCHPORT ACCESS VLAN 30
+   Switch1   CLIENTE2(config-if-range)#INTERFACE RANGE FA 0/16-21
+   Switch1   CLIENTE2(config-if-range)#SWITCHPORT MODE ACCESS
+   Switch1   CLIENTE2(config-if-range)#SWITCHPORT ACCESS VLAN 40
+   Switch1   CLIENTE2(config-if-range)#END
+   Switch1   CLIENTE2#EXIT
+   Switch0   CLIENTE1>history
+   Switch0   CLIENTE1>show history
+   Multilayer Switch0   SERVER>ENABLE
+   Multilayer Switch0   SERVER#CONFIGURE TERMINAL
+   Multilayer Switch0   SERVER(config)#IP ROUTING
+   Multilayer Switch0   SERVER(config)#INTERFACE VLAN 10 
+   Multilayer Switch0   SERVER(config-if)#IP ADDRESS 172.22.16.254 255.255.255.0
+   Multilayer Switch0   SERVER(config-if)#INTERFACE VLAN 20
+   Multilayer Switch0   SERVER(config-if)#IP ADDRESS 172.22.17.126 255.255.255.128
+   Multilayer Switch0   SERVER(config-if)#INTERFACE VLAN 30
+   Multilayer Switch0   SERVER(config-if)#IP ADDRESS 172.22.17.190 255.255.255.192
+   Multilayer Switch0   SERVER(config-if)#END
+   Multilayer Switch0   SERVER#EXIT
+   Multilayer Switch0   SERVER>ENABLE
+   Multilayer Switch0   SERVER#CONFIGURE TERMINAL
+   Multilayer Switch0   SERVER(config)#INTERFACE RANGE FA 0/1-21
+   Multilayer Switch0   SERVER(config-if-range)#SWITCHPORT MODE ACCESS 
+   Multilayer Switch0   SERVER(config-if-range)#SWITCHPORT ACCESS VLAN 40
+   Multilayer Switch0   SERVER(config-if-range)#END EXIT
+   Multilayer Switch0   SERVER(config-if-range)#END
+   Multilayer Switch0   SERVER#EXIT
+   Multilayer Switch0   SERVER>NO SHOW VLAN 40
+   Multilayer Switch0   SERVER>ENABLE
+   Multilayer Switch0   SERVER#NO SHOW VLAN 40
+   Multilayer Switch0   SERVER#CONFIGURE TERMINAL
+   Multilayer Switch0   SERVER(config)#NO SHOW VLAN 40
+   Multilayer Switch0   SERVER(config)#NO VLAN 40
+   Multilayer Switch0   SERVER(config)#END EXIT
+   Multilayer Switch0   SERVER(config)#END
+   Multilayer Switch0   SERVER#EXIT
+   Multilayer Switch0   SERVER>SHOW VLAN BRIEF
+   Switch0   CLIENTE1>ENABLE
+   Switch0   CLIENTE1#CONFIGURE TERMINAL
+   Switch0   CLIENTE1(config)#INTERFACE RANGE FA 0/1-15
+   Switch0   CLIENTE1(config-if-range)#SWITCHPORT MODE ACCESS
+   Switch0   CLIENTE1(config-if-range)#SWITCHPORT PORT-SECURITY
+   Switch0   CLIENTE1(config-if-range)#SWITCHPORT PORT SECURITY MAX 1
+   Switch0   CLIENTE1(config-if-range)#SWITCHPORT PORT SECURITY VIOLATION SHUTDOWN
+   Switch0   CLIENTE1(config-if-range)#SWITCHPORT PORT-SECURITY MAX 1
+   Switch0   CLIENTE1(config-if-range)#SWITCHPORT PORT-SECURITY VIOLATION SHUTDOWN
+   Switch0   CLIENTE1(config-if-range)#SWITCHPORT PORT-SECURITY MAC STICKY
+   Switch0   CLIENTE1(config-if-range)#END
+   Switch0   CLIENTE1#EXIT
+   Switch1   CLIENTE2>ENABLE
+   Switch1   CLIENTE2#CONFIGURE TERMINAL
+   Switch1   CLIENTE2(config)#INTERFACE RANGE FA 0/1-15
+   Switch1   CLIENTE2(config-if-range)#SWITCHPORT MODE ACCESS
+   Switch1   CLIENTE2(config-if-range)#SWITCHPORT PORT-SECURITY
+   Switch1   CLIENTE2(config-if-range)#SWITCHPORT PORT-SECURITY MAX 1
+   Switch1   CLIENTE2(config-if-range)#SWITCHPORT PORT-SECURITY VIOLATION SHUTDOWN
+   Switch1   CLIENTE2(config-if-range)#SWITCHPORT PORT-SECURITY MAC STICKY
+   Switch1   CLIENTE2(config-if-range)#END
+   Switch1   CLIENTE2#EXIT+
+   Switch1   CLIENTE2#EXIT
+   Multilayer Switch0   SERVER>SHOW PORT-SECURITY
+   Multilayer Switch0   SERVER>PORT-SECURITY
+   Multilayer Switch0   SERVER>DO SHOW PORT-SECURITY
+   Multilayer Switch0   SERVER>ENABLE
+   Multilayer Switch0   SERVER#SHOW PORT-SECURITY
+   Switch0   CLIENTE1>SHOW PORT-SECURITY
+   Switch0   CLIENTE1>ENABLE
+   Switch0   CLIENTE1#SHOW PORT-SECURITY
+   Multilayer Switch0   SERVER>ENABLE
+   Multilayer Switch0   SERVER#CONFIGURE TERMINAL
+   Multilayer Switch0   SERVER(config)#INTERFACE G0/2
+   Multilayer Switch0   SERVER(config-if)#NO SWITCHPORT
+   Multilayer Switch0   SERVER(config-if)#IP ADDRESS 172.22.19.253 255.255.255.252
+   Multilayer Switch0   SERVER(config-if)#NO SHUTDOWN
+   Router0   Router>ENABLE
+   Router0   Router#CONFIGURE TERMINAL
+   Router0   Router(config)#HOSTNAME DEPTOA
+   Router0   DEPTOA(config)#INTERFACE G 0/0
+   Router0   DEPTOA(config-if)#IP ADDRESS 172.22.17.193 255.255.255.192
+   Router0   DEPTOA(config-if)#NO SHUTDOWN
+   Router0   DEPTOA(config-if)#INTERFACE G 0/1
+   Router0   DEPTOA(config-if)#IP ADDRESS 172.22.19.254 255.255.255.252
+   Router0   DEPTOA(config-if)#NO SHUTDOWN
+   Router0   DEPTOA(config-if)#INTERFACE SE 0/0/0
+   Router0   DEPTOA(config-if)#ENCAPSULATION FRAME-RELAY
+   Router0   DEPTOA(config-if)#IP ADDRESS 11.22.0.1 255.255.255.252
+   Router0   DEPTOA(config-if)#NO SHUTDOWN
+   Router0   DEPTOA(config-if)#IP DHCP POOL DEPTOA
+   Router0   DEPTOA(dhcp-config)#NETWORK 172.22.17.192 255.255.255.192
+   Router0   DEPTOA(dhcp-config)#DEFAULT-ROUTER 172.22.17.193
+   Multilayer Switch0   SERVER>ENABLE
+   Multilayer Switch0   SERVER#CONFIGURE TERMINAL
+   Multilayer Switch0   SERVER(config)#ROUTER OSPF 10
+   Multilayer Switch0   SERVER(config-router)#DO SHOW IP ROUTE
+   Multilayer Switch0   SERVER(config-router)#NETWORK 172.22.16.0 0.0.0.255 AREA 0
+   Multilayer Switch0   SERVER(config-router)#NETWORK 172.22.17.0 0.0.0.127 AREA 0
+   Multilayer Switch0   SERVER(config-router)#NETWORK 172.22.17.128 0.0.0.63 AREA 0
+   Multilayer Switch0   SERVER(config-router)#NETWORK 172.22.19.252 0.0.0.3 AREA 0
+   Router0   DEPTOA(dhcp-config)#EXIT
+   Router0   DEPTOA(config)#ROUTER OSPF 10
+   Router0   DEPTOA(config-router)#DO SHOW IP ROUTE
+   Router0   DEPTOA(config-router)#NETWORK 172.22.17.192 0.0.0.63 AREA 0
+   Router0   DEPTOA(config-router)#NETWORK 172.22.1.252 0.0.0.3 AREA 0
+   SUCURSAL   Router>CONFIGURE TERMINAL
+   SUCURSAL   Router>HOSTNAME SUCURSAL
+   SUCURSAL   Router>INTERFACE G 0/0
+   SUCURSAL   Router>IP ADDRESS 172.22.0.1 255.255.255.0
+   SUCURSAL   Router>NO SHUTDOWN
+   SUCURSAL   Router>INTERFACE S 0/0/0
+   SUCURSAL   Router>ENCAPSULATION FRAME-RELAY
+   SUCURSAL   Router>IP ADDRESS 11.22.0.2 255.255.255.252
+   SUCURSAL   Router>ENABLE
+   SUCURSAL   Router#CONFIGURE TERMINAL
+   SUCURSAL   Router(config)#HOSTNAME SUCURSAL
+   SUCURSAL   SUCURSAL(config)#INTERFACE G 0/0
+   SUCURSAL   SUCURSAL(config-if)#IP ADDRESS 172.22.0.1 255.255.255.0
+   SUCURSAL   SUCURSAL(config-if)#NO SHUTDOWN
+   SUCURSAL   SUCURSAL(config-if)#INTERFACE S 0/0/0
+   SUCURSAL   SUCURSAL(config-if)#ENCAPSULATION FRAME-RELAY
+   SUCURSAL   SUCURSAL(config-if)#IP ADDRESS 11.22.0.2 255.255.255.252
+   SUCURSAL   SUCURSAL(config-if)#NO SHUTDOWN
+   SUCURSAL   SUCURSAL>ENABLE
+   SUCURSAL   SUCURSAL#CONFIGURE TERMINAL
+   SUCURSAL   SUCURSAL(config)#INTERFACE G0/0
+   SUCURSAL   SUCURSAL(config-if)#NO IP ADDRESS
+   SUCURSAL   SUCURSAL(config-if)#SHUTDOWN
+   SUCURSAL   SUCURSAL(config-if)#IP ADDRESS 192.22.0.1 255.255.255.0
+   SUCURSAL   SUCURSAL(config-if)#NO SHUTDOWN
+   SUCURSAL   SUCURSAL(config-if)#END
+   SUCURSAL   SUCURSAL#EXIT
+   Multilayer Switch0   SERVER>ENABLE
+   Multilayer Switch0   SERVER#CONFIGURE TERMINAL
+   Multilayer Switch0   SERVER(config)#SPANNING-TREE VLAN 10 PRIORITY 28672
+   Multilayer Switch0   SERVER(config)#SPANNING-TREE VLAN 20 PRIORITY 28672
+   Multilayer Switch0   SERVER(config)#SPANNING-TREE VLAN 30 PRIORITY 28672
+   Multilayer Switch0   SERVER(config)#END 
+   Multilayer Switch0   SERVER#EXIT
+   Router0   DEPTOA>ENABLE
+   Router0   DEPTOA#CONFIGURE TERMINAL
+   Router0   DEPTOA(config)#ROUTER OSPF 10
+   Router0   DEPTOA(config-router)#NO NETWORK 172.22.1.252 0.0.0.3 AREA 0
+   Router0   DEPTOA(config-router)#NETWORK 172.22.19.252 0.0.0.3 AREA 0
+   Router0   DEPTOA(config-router)#END 
+   Router0   DEPTOA#EXIT
+   Router0   DEPTOA>ENABLE
+   Router0   DEPTOA#CONFIGURE TERMINAL
+   Router0   DEPTOA(config)#IP ROUTE 0.0.0.0 11.17.0.2
+   Router0   DEPTOA(config)#IP ROUTE 0.0.0.0 0.0.0.0 11.17.0.2
+   Router0   DEPTOA(config)#END
+   Router0   DEPTOA#EXIT
+   SUCURSAL   SUCURSAL>ENABLE
+   SUCURSAL   SUCURSAL#CONFIGURE TERMINAL
+   SUCURSAL   SUCURSAL(config)#END 
+   SUCURSAL   SUCURSAL#EXIT
+   Router0   DEPTOA>ENABLE
+   Router0   DEPTOA#CONFIGURE TERMINAL
+   Router0   DEPTOA(config)#NO IP ROUTE 0.0.0.0 0.0.0.0 11.17.0.2
+   Router0   DEPTOA(config)#IP ROUTE 0.0.0.0 0.0.0.0 11.22.0.2
+   Router0   DEPTOA(config)#END
+   Router0   DEPTOA#EXIT
+   SUCURSAL   SUCURSAL>ENABLE
+   SUCURSAL   SUCURSAL#EXIT
+   SUCURSAL   SUCURSAL>ENABLE;CONFIGURE TERMINAL
+   SUCURSAL   SUCURSAL>ENABLE
+   SUCURSAL   SUCURSAL#CONFIGURE TERMINAL
+   SUCURSAL   SUCURSAL(config)#END
+   SUCURSAL   SUCURSAL#EXIT
+   SUCURSAL   SUCURSAL>ENABLE
+   SUCURSAL   SUCURSAL#CONFIGURE TERMINAL
+   SUCURSAL   SUCURSAL(config)#END 
+   SUCURSAL   SUCURSAL#EXIT
+   Router0   DEPTOA>ENABLE
+   Router0   DEPTOA#CONFIGURE TERMINAL
+   SUCURSAL   SUCURSAL>ENABLE
+   SUCURSAL   SUCURSAL#CONFIGURE TERMINAL
+   SUCURSAL   SUCURSAL(config)#IP ROUTE 172.22.16.0 255.255.252.0 11.22.0.1
+   SUCURSAL   SUCURSAL(config)#end
+   SUCURSAL   SUCURSAL#exit
+   Router0   DEPTOA>enable
+   Router0   DEPTOA#configure terminal
+   Router0   DEPTOA(config)#DEFAULT-INFORMATION ORIGINATE
+   Router0   DEPTOA(config)#ROUTER OSPF 10
+   Router0   DEPTOA(config-router)#DEFAULT-INFORMATION ORIGINATE
+   Router0   DEPTOA(config-router)#END
+   Router0   DEPTOA#EXIT
